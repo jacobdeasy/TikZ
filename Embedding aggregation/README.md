@@ -8,4 +8,4 @@ A simple representation of a flexible embedding aggregation architecture for lea
 
 ## Source
 
-[Impact of novel aggregation methods for flexible, time-sensitive EHR prediction without variable selection or cleaning](https://arxiv.org/abs/1909.08981), *Preprint under review at the Machine Learning for Health orkshop at NeurIPS 2019*.
+[Impact of novel aggregation methods for flexible, time-sensitive EHR prediction without variable selection or cleaning](https://arxiv.org/abs/1909.08981), *Preprint under review at the Machine Learning for Health workshop at NeurIPS 2019*.
