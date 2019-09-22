@@ -1,0 +1,90 @@
+\documentclass[crop,tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+
+\makeatletter
+\DeclareRobustCommand{\rvdots}{%
+  \vbox{
+    \baselineskip4\p@\lineskiplimit\z@
+    \kern-\p@
+    \hbox{.}\hbox{.}\hbox{.}
+  }}
+\makeatother
+
+\begin{document}
+\begin{tikzpicture}
+
+    \node at (-0.25, 4.0) {0};
+    \draw[very thick] (-0.1, 4.0) -- (0.0, 4.0);
+    \node at (-0.25, 2.5) {1};
+    \draw[very thick] (-0.1, 2.5) -- (0.0, 2.5);
+    \node at (-0.25, 0.0) {2};
+    \draw[very thick] (-0.1, 0.0) -- (0.0, 0.0);
+    \draw[very thick,-stealth] (-0.5, 4) -- (-0.5, -1);
+    \node[fill=white,rotate=90] at (-0.8, 1.5) {Hours since admission};
+    
+    \node[draw,rectangle,very thick,minimum width=1cm,minimum height=1.5cm,fill=red!20] at (0.5, 3.25) {};
+    \node[draw,rectangle,very thick,minimum width=1cm,minimum height=1.5cm,fill=red!20] at (1.5, 3.25) {};
+    \node[rectangle,minimum width=1cm,minimum height=1cm,fill=green!20] at (0.5, -0.5) {};
+    \node[rectangle,minimum width=1cm,minimum height=1cm,fill=green!20] at (1.5, -0.5) {};
+    \node[draw,rectangle,very thick,minimum width=1cm,minimum height=2.5cm,fill=blue!20] at (0.5, 1.25) {};
+    \node[draw,rectangle,very thick,minimum width=1cm,minimum height=2.5cm,fill=blue!20] at (1.5, 1.25) {};
+    \draw[very thick] (0, 0) -- (0, -1);
+    \draw[very thick] (1, 0) -- (1, -1);
+    \draw[very thick] (2, 0) -- (2, -1);
+
+    \node at (0.5, 3.75)   {00:14};
+    \node at (0.5, 3.25)   {00:23};
+    \node at (0.5, 2.75)   {00:47};
+    \node at (0.5, 2.25)   {01:13};
+    \node at (0.5, 1.75)   {01:13};
+    \node at (0.5, 1.25)   {\rvdots};
+    \node at (0.5, 0.75)   {01:38};
+    \node at (0.5, 0.25)   {01:59};
+    \node at (0.5, -0.25)  {02:03};
+    \node at (0.5, -0.75) {\rvdots};
+    
+    \node at (1.5, 3.75)  {\textbf{74}};
+    \node at (1.5, 3.25)  {\textbf{3002}};
+    \node at (1.5, 2.75)  {\textbf{869}};
+    \node at (1.5, 2.25)  {\textbf{6742}};
+    \node at (1.5, 1.75)  {\textbf{43}};
+    \node at (1.5, 1.25)  {\rvdots};
+    \node at (1.5, 0.75)  {\textbf{9573}};
+    \node at (1.5, 0.25)  {\textbf{74}};
+    \node at (1.5, -0.25) {\textbf{447}};
+    \node at (1.5, -0.75) {\rvdots};
+
+    \draw[thick,dashed] (2, 0.0) -- (4, -0.5);
+    \draw[thick,dashed] (2, 2.5) -- (4, 2.0);
+    \node[draw,rectangle,very thick,minimum width=3cm,minimum height=2.5cm,fill=blue!20] at (5.5, 0.75) {};
+    \node[font=\boldmath] at (5.5, 1.75)  {$e_{6742}$};
+    \node[font=\boldmath] at (5.5, 1.25)  {$e_{43}$};
+    \node[font=\boldmath] at (5.5, 0.75)  {\rvdots};
+    \node[font=\boldmath] at (5.5, 0.25)  {$e_{9573}$};
+    \node[font=\boldmath] at (5.5, -0.25) {$e_{74}$};
+    
+    \draw[thick,dashed] (2, 2.5) -- (4, 3);
+    \draw[thick,dashed] (2, 4.0) -- (4, 4.5);
+    \node[draw,rectangle,very thick,minimum width=3cm,minimum height=1.5cm,fill=red!20] at (5.5, 3.75) {};
+    \node[font=\boldmath] at (5.5, 4.25)  {$e_{74}$};
+    \node[font=\boldmath] at (5.5, 3.75)  {$e_{3002}$};
+    \node[font=\boldmath] at (5.5, 3.25)  {$e_{869}$};
+    
+    \draw[very thick,-stealth] (2, 4.75) -- node[above] {Embedding} (4, 4.75);
+    \draw[very thick,-stealth] (7, 4.75) -- node[above] {Aggregation} (9, 4.75);
+    
+    \draw[thick,dashed] (7, 4.5)  -- (9,3);
+    \draw[thick,dashed] (7, 3.0)  -- (9,2);
+    \draw[thick,dashed] (7, 2.0)  -- (9,2);
+    \draw[thick,dashed] (7, -0.5) -- (9,1);
+
+    \node[draw,rectangle,very thick,minimum width=3cm,minimum height=1cm,fill=red!20,font=\boldmath] at (10.5, 2.5) {$f_{\textrm{agg}}\left(\{e_{i_{t}}\}_{0\leq t<1}\right)$};
+    \node[draw,rectangle,very thick,minimum width=3cm,minimum height=1cm,fill=blue!20,font=\boldmath] at (10.5, 1.5) {$f_{\textrm{agg}}\left(\{e_{i_{t}}\}_{1\leq t<2}\right)$};
+    \node[draw,rectangle,very thick,minimum width=3cm,minimum height=1cm,fill=green!20,font=\boldmath] at (10.5, 0.5) {$f_{\textrm{agg}}\left(\{e_{i_{t}}\}_{2\leq t<3}\right)$};
+    
+    \node at (10.5, -0.5) {\rvdots};
+
+\end{tikzpicture}
+\end{document}
