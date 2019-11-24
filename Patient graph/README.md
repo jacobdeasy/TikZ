@@ -1,4 +1,4 @@
-# Patient timeline
+# Patient graph
 
 ## Info
 
