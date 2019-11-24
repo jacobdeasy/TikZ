@@ -5,6 +5,7 @@
 A simple representation of a flexible embedding aggregation architecture for learning from unprocessed electronic health record (EHR) data. Can easily be used in any context where multiple embeddings per time interval are required.
 
 ## Output
+![](embedding_aggregation.png)
 
 ## Source
 
