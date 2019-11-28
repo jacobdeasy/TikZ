@@ -1,0 +1,77 @@
+\documentclass[crop,tikz]{standalone}
+\usepackage{bm}
+\usepackage{tikz}
+
+\tikzstyle{gruNode}=[draw,rounded rectangle]
+\tikzstyle{transition}=[-stealth, thick]
+
+\usetikzlibrary{shapes.misc}
+
+\makeatletter
+\DeclareRobustCommand{\rvdots}{%
+  \vbox{
+    \baselineskip4\p@\lineskiplimit\z@
+    \kern-\p@
+    \hbox{.}\hbox{.}\hbox{.}
+  }}
+\makeatother
+
+\begin{document}
+\begin{tikzpicture}
+
+	\node (h10) at (-1, 1) {$\bm{h}_{1,0}$};
+	\node (h20) at (-1, 2) {$\bm{h}_{2,0}$};
+	\node at (-1, 3) {\rvdots};
+	\node (hn0) at (-1, 4) {$\bm{h}_{n,0}$};
+
+	\node (x1) at (1, 0) {$\bm{x}_{1}$};
+	\node[gruNode] (gru11) at (1,1) {GRU};
+	\node[gruNode] (gru21) at (1,2) {GRU};
+	\node[gruNode] (grun1) at (1,4) {GRU};
+	\node (y1) at (1, 5) {$\bm{y}_{1}$};
+
+	\node (x2) at (3, 0) {$\bm{x}_{2}$};
+	\node[gruNode] (gru12) at (3,1) {GRU};
+	\node[gruNode] (gru22) at (3,2) {GRU};
+	\node[gruNode] (grun2) at (3,4) {GRU};
+	\node (y2) at (3, 5) {$\bm{y}_{2}$};
+
+	\node at (5, 0) {\ldots};
+	\node at (5, 5) {\ldots};
+
+	\node (xn) at (7, 0) {$\bm{x}_{t}$};
+	\node[gruNode] (gru1t) at (7,1) {GRU};
+	\node[gruNode] (gru2t) at (7,2) {GRU};
+	\node[gruNode] (grunt) at (7,4) {GRU};
+	\node (yt) at (7, 5) {$\bm{y}_{t}$};
+
+
+	\draw[transition] (h10) to (gru11);
+	\draw[transition] (h20) to (gru21);
+	\draw[transition] (hn0) to (grun1);
+
+	\draw[transition] (x1) to (gru11);
+	\draw[transition] (gru11) to (gru21);
+	\draw[transition,dashed] (gru21) to (grun1);
+	\draw[transition] (grun1) to (y1);
+
+	\draw[transition] (gru11) to (gru12);
+	\draw[transition] (gru21) to (gru22);
+	\draw[transition] (grun1) to (grun2);
+	\draw[transition] (grun2) to (y2);
+
+	\draw[transition] (x2) to (gru12);
+	\draw[transition] (gru12) to (gru22);
+	\draw[transition,dashed] (gru22) to (grun2);
+
+	\draw[transition,dashed] (gru12) to (gru1t);
+	\draw[transition,dashed] (gru22) to (gru2t);
+	\draw[transition,dashed] (grun2) to (grunt);
+
+	\draw[transition] (xn) to (gru1t);
+	\draw[transition] (gru1t) to (gru2t);
+	\draw[transition,dashed] (gru2t) to (grunt);
+	\draw[transition] (grunt) to (yt);
+
+\end{tikzpicture}
+\end{document}
